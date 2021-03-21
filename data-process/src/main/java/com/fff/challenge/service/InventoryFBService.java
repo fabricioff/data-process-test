@@ -25,7 +25,7 @@ import com.google.firebase.cloud.FirestoreClient;
 
 
 @Service
-public class InventoryService {
+public class InventoryFBService {
 	
 	public static final String COL_NAME="inventory";
 	
@@ -45,7 +45,7 @@ public class InventoryService {
 		for (Inventory inventory : list) {
 			if (getProductDetails(inventory.getProduct()) == null) {
 				DocumentReference document = collection.document();
-				inventory.setId(document.getId());
+				//inventory.setId(document.getId());
 				lastOperation = document.set(inventory).get().getUpdateTime().toString();;
 			} else {
 				System.out.println("Produto já existente: " + inventory.getProduct());
