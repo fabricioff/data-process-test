@@ -35,6 +35,8 @@ public class Inventory implements Serializable {
 	private String industry;
 	
 	private String origin;
+	
+	private Double volume;
 
 	
 	public Inventory() {
@@ -49,6 +51,7 @@ public class Inventory implements Serializable {
 		this.type = type;
 		this.industry = industry;
 		this.origin = origin;
+		this.volume = this.price * this.quantity;
 	}
 
 	public Long getId() {
@@ -105,6 +108,10 @@ public class Inventory implements Serializable {
 
 	public void setOrigin(String origin) {
 		this.origin = origin;
+	}
+	
+	public Double getVolume() {
+		return volume;
 	}
 
 	@Override
@@ -165,7 +172,7 @@ public class Inventory implements Serializable {
 	@Override
 	public String toString() {
 		return "Inventory [id=" + id + ", product=" + product + ", quantity=" + quantity + ", price=" + price
-				+ ", type=" + type + ", industry=" + industry + ", origin=" + origin + "]";
+				+ ", type=" + type + ", industry=" + industry + ", origin=" + origin + ", volume=" + volume +"]";
 	}
 	
 	
