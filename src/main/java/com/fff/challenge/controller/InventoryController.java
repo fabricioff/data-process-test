@@ -31,9 +31,16 @@ public class InventoryController {
 	private InventoryService inventoryService;	
 	
 
-	@GetMapping("/getProducts")	
+	@GetMapping("/getInventory")	
 	public List<Inventory> getAll() {
 		return inventoryRepository.findAll();
+	}
+	
+	@GetMapping("/getProduct")	
+	public List<Inventory> getProduct(@RequestParam String product) {
+		return getAll().stream()
+	    		.filter(i -> i.getProduct().equalsIgnoreCase(product))
+	    		.collect(Collectors.toList());
 	}
 	
 	@PostMapping("/createInventory")
@@ -48,11 +55,10 @@ public class InventoryController {
     	Set<Inventory> listToSave = new HashSet<Inventory>();   
     	
     	List<Inventory> all = getAll();
-    	System.out.println("Total encontrado: " + all.size());
+    	System.out.println("Total encontrado: " + all.size());   		
     	
     	for (Entry<String, List<Inventory>> entries : data_json.entrySet()) {
 	    	List<Inventory> invemtories = entries.getValue().stream()
-		    	//.map(Map.Entry::getValue)
 		    	.filter(i -> !all.contains(i))
 		        .collect(Collectors.toList());   	
 	    	
@@ -70,14 +76,9 @@ public class InventoryController {
         
     @GetMapping("/processInventory")
     public Map<String, List<Inventory>> processInventory(@RequestParam String product, @RequestParam String clientsAmount) {
-    	List<Inventory> inventories = getAll().stream()
-    		.filter(i -> i.getProduct().equalsIgnoreCase(product))
-    		.collect(Collectors.toList());
+    	List<Inventory> inventories = getProduct(product);
     	
     	 return inventoryService.dataProcessing(inventories, product, clientsAmount);
     }
-    
-    
-    
     
 }

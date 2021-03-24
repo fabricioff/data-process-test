@@ -11,9 +11,7 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import lombok.Data;
 
-//@Data /*Foi removido devido a validação de falha de importação - Reimplementação do hash equals*/
 @Entity
 @JsonPropertyOrder({ "product","quantity","price","type","industry","origin" })
 public class Inventory implements Serializable {

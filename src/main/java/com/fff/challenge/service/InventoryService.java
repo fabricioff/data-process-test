@@ -1,7 +1,5 @@
 package com.fff.challenge.service;
 
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -61,7 +59,8 @@ public class InventoryService {
     		.filter(i -> i.getProduct().equalsIgnoreCase(product))
     		.collect(Collectors.toList());
     	
-    	String log = "==[ LOG DATA PROCESSING ]===============";
+    	String log = 
+    		   "==[ LOG DATA PROCESSING ]===============";
     	log += String.format("\n > Clientes................: %s", clientsAmount);
     	log += String.format("\n > Produto.................: %s", product);
     	log += "\n--------------------------------";
@@ -133,11 +132,5 @@ public class InventoryService {
     	
     	return result;
 	}
-	
-	private String arredondar(double value) {
- 	   DecimalFormat df = new DecimalFormat("0.00");
- 	   df.setRoundingMode(RoundingMode.HALF_UP);
- 	   return df.format(value);
- }
 
 }
