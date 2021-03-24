@@ -77,6 +77,11 @@ cd deploy/
 java -jar data-process-api-0.0.1.jar
 
 ```
+Caso seja necessário gerar um novo JAR da API, execute o seguinte comando:
+
+```sh
+mvn clean package
+```
 
 ## Endpoints
 
@@ -86,14 +91,14 @@ Após a execução da API, será possível fazer acesso ao endpoints acessando:
 localhost:8080/ENDPOINT
 ```
 
-A API possui posui os sequintes endpoints:
+A API possui posui os seguintes endpoints:
 
 
-- [/getInventory](localhost:8080/getInventory) -> Obtém uma lista de todos os produtos importados no banco 
-- [/getProduct](localhost:8080/getInventory?product=EMMS) -> Obtém os detalhes de um produto especificado.
-- [/createInventory](localhost:8080/createInventory) -> Cria e insere um produto no banco de dados. Necessário enviar um JSON pelo BODY com a estrutura especificada mais abaixo.
-- [/importInventory](localhost:8080/importInventory?clientsAmount=2&product=EMMS) -> Realiza a importação dos produtos no banco de dados. Necessário enviar um JSON com a massa de dados pelo BODY.
-- [/processInventory](localhost:8080/processInventory?clientsAmount=2&product=EMMS) -> Realiza o processamento dos dados, retornando a distribuição de produtos entre clientes. Necessário informar dois parametros 'clientsAmount'(quantidade de clientes) e 'product'(nome do produto).
+- [/getInventory](http://localhost:8080/getInventory) -> Obtém uma lista de todos os produtos importados no banco 
+- [/getProduct](http://localhost:8080/getInventory?product=EMMS) -> Obtém os detalhes de um produto especificado.
+- [/createInventory](http://localhost:8080/createInventory) -> Cria e insere um produto no banco de dados. Necessário enviar um JSON pelo BODY com a estrutura especificada mais abaixo.
+- [/importInventory](http://localhost:8080/importInventory) -> Realiza a importação dos produtos no banco de dados. Necessário enviar um JSON com a massa de dados pelo BODY.
+- [/processInventory](http://localhost:8080/processInventory?clientsAmount=2&product=EMMS) -> Realiza o processamento dos dados, retornando a distribuição de produtos entre clientes. Necessário informar dois parametros 'clientsAmount'(quantidade de clientes) e 'product'(nome do produto).
 
 > Para criar o produto, é necessário informar um JSON com a seguinte estrutura:
 
