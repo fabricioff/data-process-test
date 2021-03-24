@@ -13,7 +13,7 @@ Foram utilizados recursos de lambdas, streams, além dos recusos do Spring Frame
 - Banco de dados relacional: PostgreSQL
 
 
-## Usando banco de dados: PostgreSQL
+## Banco de dados: PostgreSQL
 
 Esta API foi desenvolvida e testada utilizando o banco de dados PostgreSQL.
 
