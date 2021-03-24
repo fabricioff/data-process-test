@@ -35,6 +35,15 @@ CREATE DATABASE data_processing
     CONNECTION LIMIT = -1;
 ```
 
+Para perfeita comunicação da API com o banco de dados, segue a seguir os paramentros de configuração no banco utilizado pela API:
+
+```SH
+spring.datasource.url = jdbc:postgresql://localhost:5432/data_processing
+spring.datasource.username = postgres
+spring.datasource.password = postgres
+spring.jpa.hibernate.ddl-auto = update
+```
+
 Devido a utilização do framework Spring Boot e suas configuações, não seria necessário a criação da tabela por script SQL.
  
 Ao executar a aplicação pela primeira vez, a tabela 'inventory' será criada.
@@ -95,12 +104,13 @@ A API possui posui os seguintes endpoints:
 
 
 - [/getInventory](http://localhost:8080/getInventory) -> Obtém uma lista de todos os produtos importados no banco 
-- [/getProduct](http://localhost:8080/getInventory?product=EMMS) -> Obtém os detalhes de um produto especificado.
-- [/createInventory](http://localhost:8080/createInventory) -> Cria e insere um produto no banco de dados. Necessário enviar um JSON pelo BODY com a estrutura especificada mais abaixo.
+- [/getProduct](http://localhost:8080/getInventory?product=EMMS) -> Obtém os detalhes de um produto especificado. O nome do produto precisa ser informado como parametro
+
+- [/createInventory](http://localhost:8080/createInventory) -> Cria e insere um produto no banco de dados. Necessário enviar um JSON pelo BODY com a estrutura especifica, como é apresentado mais abaixo.
 - [/importInventory](http://localhost:8080/importInventory) -> Realiza a importação dos produtos no banco de dados. Necessário enviar um JSON com a massa de dados pelo BODY.
 - [/processInventory](http://localhost:8080/processInventory?clientsAmount=2&product=EMMS) -> Realiza o processamento dos dados, retornando a distribuição de produtos entre clientes. Necessário informar dois parametros 'clientsAmount'(quantidade de clientes) e 'product'(nome do produto).
 
-> Para criar o produto, é necessário informar um JSON com a seguinte estrutura:
+Para criar o produto, é necessário informar um JSON com a seguinte estrutura:
 
 ```json
 {
